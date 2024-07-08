@@ -14,13 +14,15 @@ import 'package:habbito/themes/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await configureDependencies();
   EquatableConfig.stringify = kDebugMode;
   if (kReleaseMode) {
     await dotenv.load(fileName: ".env");
   } else {
     await dotenv.load(fileName: ".dev.env");
   }
+
+    await configureDependencies();
+
 
   final apptoken = await getIt<StorageUtils>().getDataForSingle(
     key: token,
