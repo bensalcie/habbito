@@ -4,6 +4,7 @@ import 'package:habbito/core/common/constants/app_strings.dart';
 import 'package:habbito/core/common/constants/routes.dart';
 import 'package:habbito/core/common/presentation/widgets/scaffold_with_navbar.dart';
 import 'package:habbito/features/chat/presentation/pages/chat_page.dart';
+import 'package:habbito/features/home/presentation/pages/home_page.dart';
 import 'package:habbito/themes/theme.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
@@ -43,23 +44,22 @@ class App extends StatelessWidget {
           GoRoute(
             path: home_page_route,
             builder: (BuildContext context, GoRouterState state) {
-              return const ChatPage();
+              return const HomePage();
             },
           ),
           GoRoute(
-            path:topics_page_index ,
+            path: topics_page_index,
             builder: (BuildContext context, GoRouterState state) {
               return const ChatPage();
             },
           ),
-      
           GoRoute(
             path: chat_page_index,
             builder: (BuildContext context, GoRouterState state) {
               return const ChatPage();
             },
           ),
-              GoRoute(
+          GoRoute(
             path: personal_page_index,
             builder: (BuildContext context, GoRouterState state) {
               return const ChatPage();
