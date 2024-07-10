@@ -27,10 +27,11 @@ import '../features/home/domain/repositories/get_recommended_topics_repository.d
     as _i11;
 import '../features/home/domain/usecases/get_recommended_topics_usecase.dart'
     as _i13;
-import '../features/home/presentation/bloc/topic_content_bloc.dart' as _i15;
+import '../features/home/presentation/bloc/topic_content_bloc.dart' as _i16;
+import '../features/home/presentation/bloc/topic_image_bloc.dart' as _i14;
 import '../features/home/presentation/bloc/topic_recommendations_bloc.dart'
-    as _i14;
-import 'module_injection.dart' as _i16;
+    as _i15;
+import 'module_injection.dart' as _i17;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -74,12 +75,14 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i13.GetRecommendedTopicsUseCase>(() =>
         _i13.GetRecommendedTopicsUseCase(
             gh<_i11.GetRecommendedTopicsRepository>()));
-    gh.factory<_i14.TopicRecommendationsBloc>(() =>
-        _i14.TopicRecommendationsBloc(gh<_i13.GetRecommendedTopicsUseCase>()));
-    gh.factory<_i15.TopicContentBloc>(
-        () => _i15.TopicContentBloc(gh<_i13.GetRecommendedTopicsUseCase>()));
+    gh.factory<_i14.TopicImageBloc>(
+        () => _i14.TopicImageBloc(gh<_i13.GetRecommendedTopicsUseCase>()));
+    gh.factory<_i15.TopicRecommendationsBloc>(() =>
+        _i15.TopicRecommendationsBloc(gh<_i13.GetRecommendedTopicsUseCase>()));
+    gh.factory<_i16.TopicContentBloc>(
+        () => _i16.TopicContentBloc(gh<_i13.GetRecommendedTopicsUseCase>()));
     return this;
   }
 }
 
-class _$RegisterModules extends _i16.RegisterModules {}
+class _$RegisterModules extends _i17.RegisterModules {}

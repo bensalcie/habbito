@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:habbito/core/common/constants/routes.dart';
-import 'package:habbito/core/common/presentation/widgets/app_textview_large.dart';
 import 'package:habbito/themes/theme.dart';
 
 import '../../constants/app_strings.dart';
@@ -22,13 +21,6 @@ class ScaffoldWithNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: child,
-      appBar: AppBar(
-        centerTitle: true,
-        title: const AppTextViewLarge(
-          message: 'Habbito',
-          textAlign: TextAlign.center,
-        ),
-      ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: kLightColor,
         showUnselectedLabels: true,
