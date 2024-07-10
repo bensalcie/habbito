@@ -10,12 +10,12 @@ part 'topic_image_state.dart';
 class TopicImageBloc extends Bloc<TopicImageEvent, TopicImageState> {
   final GetRecommendedTopicsUseCase _getRecommendedTopicsImageUseCase;
 
-  TopicImageBloc(this._getRecommendedTopicsImageUseCase) : super(TopicImageInitial()) {
+  TopicImageBloc(this._getRecommendedTopicsImageUseCase)
+      : super(TopicImageInitial()) {
     on<GetTopicImage>(_onGetTopicImage);
   }
 
-  _onGetTopicImage(
-      GetTopicImage event, Emitter<TopicImageState> emit) async {
+  _onGetTopicImage(GetTopicImage event, Emitter<TopicImageState> emit) async {
     emit(TopicImageLoading());
 
     final result = await _getRecommendedTopicsImageUseCase.call(event.prompt);

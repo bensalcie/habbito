@@ -366,7 +366,6 @@ extension StringExtension on String {
   }
 }
 
-
 String convertDateTime(String inputDateTime) {
   // Parse the input date string to a DateTime object
   DateTime dateTime = DateTime.parse(inputDateTime).toLocal();
@@ -394,7 +393,6 @@ int extractYear(String dateString) {
   return DateTime.now().year;
 }
 
-
 // Extract Brand Shop names.
 String extractShopName(String url) {
   // Parse the URL
@@ -408,6 +406,7 @@ String extractShopName(String url) {
 
   return shopName;
 }
+
 String capitalizeFirstLetter(String text) {
   if (text.isEmpty) {
     return text;

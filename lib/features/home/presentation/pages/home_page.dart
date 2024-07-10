@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habbito/core/common/constants/app_strings.dart';
 import 'package:habbito/core/common/constants/dimens.dart';
 import 'package:habbito/core/common/presentation/widgets/app_shimmer_grid_vertical_loader.dart';
-import 'package:habbito/core/common/presentation/widgets/app_shimmer_vertical_loader.dart';
 import 'package:habbito/core/common/presentation/widgets/app_textview_large.dart';
 import 'package:habbito/core/common/presentation/widgets/app_textview_small.dart';
 import 'package:habbito/core/common/utils/app_utils.dart';
