@@ -1,6 +1,6 @@
 # habbito
 
-A new Flutter project.
+A revolutionary app to help quit habbits you are struggling with
 
 ## Getting Started
 
