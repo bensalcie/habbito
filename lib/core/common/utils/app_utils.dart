@@ -366,13 +366,6 @@ extension StringExtension on String {
   }
 }
 
-List<String> ordertracklabels = [
-  'Order Received',
-  'Dispatched',
-  'In Progress',
-  'Delivered'
-];
-
 String convertDateTime(String inputDateTime) {
   // Parse the input date string to a DateTime object
   DateTime dateTime = DateTime.parse(inputDateTime).toLocal();
@@ -400,47 +393,6 @@ int extractYear(String dateString) {
   return DateTime.now().year;
 }
 
-String mapCategories(String? categoryname) {
-  String categoryId = '330';
-
-  switch (categoryname) {
-    case "Smartphones":
-      categoryId = '330';
-      break;
-
-    case "Computing":
-      categoryId = '306';
-      break;
-    case "Cosmetics":
-      categoryId = '340';
-      break;
-    case "Electronics":
-      categoryId = '299';
-      break;
-    case "Home Essentials":
-      categoryId = '0';
-      break;
-    case "Home & Living":
-      categoryId = '321';
-      break;
-
-    case "Large Appliances":
-      categoryId = '315';
-      break;
-    case "Furniture":
-      categoryId = '321';
-      break;
-    case "Tools":
-      categoryId = '1315';
-      break;
-    case "Home Appliance":
-      categoryId = '314';
-      break;
-  }
-
-  return categoryId;
-}
-
 // Extract Brand Shop names.
 String extractShopName(String url) {
   // Parse the URL
@@ -455,47 +407,9 @@ String extractShopName(String url) {
   return shopName;
 }
 
-String extractAndCapitalizeBrandName(String input) {
-  // Check if the input contains "brand name = "
-  if (input.contains("brand name = ")) {
-    // Extract the brand name part after "brand name = "
-    String brandName = input.split("brand name = ")[1];
-
-    // Capitalize the first letter of the extracted brand name
-    return brandName.substring(0, 1).toUpperCase() + brandName.substring(1);
-  } else {
-    // If the input does not contain "brand name = ", return the input itself
-    return input;
+String capitalizeFirstLetter(String text) {
+  if (text.isEmpty) {
+    return text;
   }
-}
-
-String formatTrackingDate(String stringdate) {
-  // Parse the input date string to a DateTime object
-  DateTime dateTime = DateTime.parse(stringdate).toLocal();
-
-  // Define the desired output format
-  DateFormat outputFormat = DateFormat('MMM dd, hh:mm a');
-
-  // Format the DateTime object to the desired format
-  return outputFormat.format(dateTime);
-}
-
-String extractLineId({required lineurl}) {
-  // Define the regular expression to capture the number after '/lines/' and before the next '/'
-  RegExp regExp = RegExp(r'/lines/(\d+)/');
-  Match? match = regExp.firstMatch(lineurl);
-  String extractedValue = "";
-
-  if (match != null) {
-    extractedValue = match.group(1)!; // The first capture group
-    if (kDebugMode) {
-      print('Extracted Value: $extractedValue');
-    }
-  } else {
-    if (kDebugMode) {
-      print('No match found');
-    }
-  }
-
-  return extractedValue;
+  return text[0].toUpperCase() + text.substring(1);
 }

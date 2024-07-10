@@ -20,13 +20,18 @@ class TopicRecommendationsBloc
       Emitter<TopicRecommendationsState> emit) async {
     emit(TopicRecommendationsLoading());
 
-    final result = await _topicRecommendationsUseCase.call(event.prompt);
-    emit(
-      result.fold(
-        (failure) => const TopicRecommendationsFailed(
-            errorMessage: 'Something went wrong'),
-        (data) => TopicRecommendationsSuccess(response: data!),
-      ),
-    );
+    try {
+      final result = await _topicRecommendationsUseCase.call(event.prompt);
+      emit(
+        result.fold(
+          (failure) => const TopicRecommendationsFailed(
+              errorMessage: 'Something went wrong'),
+          (data) => TopicRecommendationsSuccess(response: data!),
+        ),
+      );
+    } catch (e) {
+      emit(const TopicRecommendationsFailed(
+          errorMessage: 'Something went wrong'));
+    }
   }
 }
