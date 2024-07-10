@@ -8,6 +8,6 @@ const token = 'token';
 const geminipro = 'gemini-pro';
 
 const initialprompt =
-    'Apart from bad habbits such as  alcohol habits, list the top five others faced globally by youths,make them to a comma separated';
+    'Apart from bad habbits such as  alcohol habits, list the top five others faced globally by youths ,make them to a comma separated';
 //'What to avoid to live healthy';
-   // 'List top five additctions that people struggle with globally ,let them be as short as possible and listed each on its new line.';
+// 'List top five additctions that people struggle with globally ,let them be as short as possible and listed each on its new line.';

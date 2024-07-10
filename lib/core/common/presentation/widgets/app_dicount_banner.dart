@@ -3,7 +3,6 @@ import 'package:habbito/core/common/constants/dimens.dart';
 import 'package:habbito/core/common/presentation/widgets/app_textview_small.dart';
 import 'package:habbito/themes/theme.dart';
 
-
 class AppDiscountBanner extends StatelessWidget {
   final double percentdiscount;
   final Color? bannerbackgroundcolor;

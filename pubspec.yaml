@@ -37,7 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   equatable: ^2.0.5
   bloc: ^8.1.4
-  flutter_native_splash: ^2.2.19
+  flutter_native_splash: ^2.4.1
   flutter_bloc: ^8.1.6
   sentry_flutter: ^7.14.0
   injectable: ^2.1.2

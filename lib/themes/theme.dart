@@ -111,10 +111,11 @@ class HexColor extends Color {
 class AppTheme {
   static ThemeData main() {
     return ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 123, 60, 231)),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 123, 60, 231)),
         useMaterial3: true,
         fontFamily: app_font,
-       primaryColor: kPrimaryColor,
+        primaryColor: kPrimaryColor,
         appBarTheme: AppBarTheme(
           backgroundColor: kPageBackgroudColor,
           toolbarTextStyle: TextStyle(

@@ -4,11 +4,10 @@ import 'package:injectable/injectable.dart';
 
 part 'chat_event.dart';
 part 'chat_state.dart';
-@injectable
 
+@injectable
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
   ChatBloc() : super(ChatInitial()) {
-    on<ChatEvent>((event, emit) {
-    });
+    on<ChatEvent>((event, emit) {});
   }
 }

@@ -12,7 +12,6 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      
       body: Center(
         child: AppTextViewMedium(
           text: 'Ben Salcie',
