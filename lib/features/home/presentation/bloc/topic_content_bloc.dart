@@ -7,24 +7,22 @@ part 'topic_content_event.dart';
 part 'topic_content_state.dart';
 
 @injectable
-class TopicContentBloc
-    extends Bloc<TopicContentEvent, TopicContentState> {
+class TopicContentBloc extends Bloc<TopicContentEvent, TopicContentState> {
   final GetRecommendedTopicsUseCase _topicContentUseCase;
 
-  TopicContentBloc(this._topicContentUseCase)
-      : super(TopicContentInitial()) {
+  TopicContentBloc(this._topicContentUseCase) : super(TopicContentInitial()) {
     on<GetTopicContent>(_onGetTopicContent);
   }
 
-  _onGetTopicContent(GetTopicContent event,
-      Emitter<TopicContentState> emit) async {
+  _onGetTopicContent(
+      GetTopicContent event, Emitter<TopicContentState> emit) async {
     emit(TopicContentLoading());
 
     final result = await _topicContentUseCase.call(event.prompt);
     emit(
       result.fold(
-        (failure) => const TopicContentFailed(
-            errorMessage: 'Something went wrong'),
+        (failure) =>
+            const TopicContentFailed(errorMessage: 'Something went wrong'),
         (data) => TopicContentSuccess(response: data!),
       ),
     );

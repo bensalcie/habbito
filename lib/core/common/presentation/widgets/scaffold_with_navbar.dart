@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:habbito/core/common/constants/routes.dart';
@@ -37,8 +38,8 @@ class ScaffoldWithNavBar extends StatelessWidget {
         //     const TextStyle(letterSpacing: 0, height: 0, fontSize: 0),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            activeIcon: Icon(Icons.home_filled),
-            icon: Icon(Icons.home_filled),
+            activeIcon: Icon(CupertinoIcons.home),
+            icon: Icon(CupertinoIcons.home),
             label: home_label,
           ),
           BottomNavigationBarItem(
@@ -47,8 +48,8 @@ class ScaffoldWithNavBar extends StatelessWidget {
             label: 'Topics',
           ),
           BottomNavigationBarItem(
-            activeIcon: Icon(Icons.chat_rounded),
-            icon: Icon(Icons.chat_rounded),
+            activeIcon: Icon(CupertinoIcons.chat_bubble_2),
+            icon: Icon(CupertinoIcons.chat_bubble_2),
             label: 'Chat',
           ),
           BottomNavigationBarItem(

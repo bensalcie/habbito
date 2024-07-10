@@ -4,7 +4,6 @@ import 'package:habbito/core/common/presentation/widgets/app_textview_small.dart
 import 'package:habbito/core/common/presentation/widgets/app_textview_subtitle.dart';
 import 'package:habbito/themes/theme.dart';
 
-
 class SellerRatingView extends StatelessWidget {
   final int boughtcount;
   final double rating;

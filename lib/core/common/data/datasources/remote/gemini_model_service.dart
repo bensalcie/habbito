@@ -1,11 +1,12 @@
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:habbito/core/common/constants/app_strings.dart';
+
 class GenerativeModelService {
   final GenerativeModel model;
 
   GenerativeModelService({required String apiKey})
       : model = GenerativeModel(
-          model:geminipro,
+          model: geminipro,
           apiKey: apiKey,
         );
 

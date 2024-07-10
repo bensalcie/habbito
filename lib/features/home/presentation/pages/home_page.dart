@@ -58,9 +58,9 @@ class _HomePageState extends State<HomePage> {
                           final topic = topiclist[index];
                           return InkWell(
                             onTap: () {
-                              context.read<TopicContentBloc>().add(
-                                  GetTopicContent(
-                                      prompt: 'How to avoid anything $topic include atleast 3 links to accessible images  as comma separated' ));
+                              context.read<TopicContentBloc>().add(GetTopicContent(
+                                  prompt:
+                                      'How to avoid anything $topic include atleast 3 links to accessible images  as comma separated'));
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),

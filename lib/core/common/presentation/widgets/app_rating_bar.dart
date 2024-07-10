@@ -3,7 +3,6 @@ import 'package:habbito/core/common/constants/dimens.dart';
 import 'package:habbito/core/common/presentation/widgets/app_textview_subtitle.dart';
 import 'package:habbito/themes/theme.dart';
 
-
 class AppRatingBar extends StatelessWidget {
   final int rating;
   const AppRatingBar({super.key, required this.rating});

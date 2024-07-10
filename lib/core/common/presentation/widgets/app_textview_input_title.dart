@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:habbito/core/common/constants/app_strings.dart';
 import 'package:habbito/themes/theme.dart';
 
-
 class AppTextViewInputTitle extends StatelessWidget {
   final String text;
   final TextAlign? textAlign;

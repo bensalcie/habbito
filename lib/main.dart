@@ -11,7 +11,6 @@ import 'package:habbito/core/common/utils/app_global_observer.dart';
 import 'package:habbito/di/injection.dart';
 import 'package:habbito/themes/theme.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   EquatableConfig.stringify = kDebugMode;
@@ -21,8 +20,7 @@ void main() async {
     await dotenv.load(fileName: ".dev.env");
   }
 
-    await configureDependencies();
-
+  await configureDependencies();
 
   final apptoken = await getIt<StorageUtils>().getDataForSingle(
     key: token,
@@ -30,7 +28,6 @@ void main() async {
   if (kDebugMode) {
     Bloc.observer = AppGlobalBlocObserver();
   }
-
 
   /// Please add all BloCs ref to [BlocsRoot]
   runApp(BlocsRoot(apptoken: apptoken));

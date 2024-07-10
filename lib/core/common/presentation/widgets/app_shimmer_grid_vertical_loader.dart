@@ -12,7 +12,7 @@ class AppShimmerGridVerticalLoader extends StatelessWidget {
   final Color highlightColor;
 
   const AppShimmerGridVerticalLoader({
-    Key? key,
+    super.key,
     required this.height,
     required this.width,
     this.itemCount = 5,
@@ -21,7 +21,7 @@ class AppShimmerGridVerticalLoader extends StatelessWidget {
     this.borderRadius = 0.0,
     this.baseColor = Colors.grey,
     this.highlightColor = Colors.white,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

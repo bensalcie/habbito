@@ -5,8 +5,7 @@ class ExpandableSearch extends StatefulWidget {
   final String? hint;
   final double? width;
   const ExpandableSearch(
-      {Key? key, required this.onChange, this.hint, this.width})
-      : super(key: key);
+      {super.key, required this.onChange, this.hint, this.width});
 
   @override
   State<ExpandableSearch> createState() => _ExpandableSearchState();

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:habbito/core/common/constants/dimens.dart';
 import 'package:habbito/themes/theme.dart';
 
-
 class AppLinearProgressIndicator extends StatelessWidget {
   final Color? backgroundcolor;
   final double? horizontalpadding;

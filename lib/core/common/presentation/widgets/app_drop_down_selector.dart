@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:habbito/core/common/constants/dimens.dart';
 import 'package:habbito/themes/theme.dart';
 
-
 import 'app_textview_input_title.dart';
 import '../../constants/app_strings.dart';
 

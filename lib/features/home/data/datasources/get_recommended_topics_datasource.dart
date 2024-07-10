@@ -13,7 +13,8 @@ abstract class GetRecommendedTopicsRemoteDataSource {
 }
 
 @LazySingleton(as: GetRecommendedTopicsRemoteDataSource)
-class GetRecommendedTopicsRemoteDataSourceImpl implements GetRecommendedTopicsRemoteDataSource {
+class GetRecommendedTopicsRemoteDataSourceImpl
+    implements GetRecommendedTopicsRemoteDataSource {
   final GenerativeModelService _generativeModelService;
 
   GetRecommendedTopicsRemoteDataSourceImpl(this._generativeModelService);
@@ -30,16 +31,14 @@ class GetRecommendedTopicsRemoteDataSourceImpl implements GetRecommendedTopicsRe
       }
 
       return response;
-
-      
-    } 
-     catch (e) {
+    } catch (e) {
       if (kDebugMode) {
         print('Get Topics response: $e');
       }
       if (e is GenerativeAIException) {
-        throw Exception('Content generation was blocked due to safety concerns.');
-      } 
+        throw Exception(
+            'Content generation was blocked due to safety concerns.');
+      }
       rethrow;
     }
   }

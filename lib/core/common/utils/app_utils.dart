@@ -8,8 +8,6 @@ import 'package:habbito/core/common/presentation/widgets/app_textview_subtitle.d
 import 'package:habbito/themes/theme.dart';
 import 'package:intl/intl.dart';
 
-
-
 //Show snackbar
 void showSnackBar({
   required context,
@@ -338,8 +336,6 @@ extension FormatNumberExtension on String {
     return replaceAllMapped(regex, (Match match) => '${match[1]},');
   }
 }
-
-
 
 //Split Name, Key Values from Product Features.
 String getProductFeatures(String input) {
