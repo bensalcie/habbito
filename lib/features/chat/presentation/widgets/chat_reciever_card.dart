@@ -16,8 +16,7 @@ class ChatRecieverCard extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(child: FormattedTextView(text: 'Habbito: \n$messsage')
-              ),
+          Expanded(child: FormattedTextView(text: 'Habbito: \n$messsage')),
           Image.asset(
             'assets/images/habbitologo.png',
             height: 35,

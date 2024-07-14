@@ -8,21 +8,19 @@ part 'chat_state.dart';
 
 @injectable
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
-  final GetRecommendedTopicsUseCase _ChatUseCase;
+  final GetRecommendedTopicsUseCase _chatUseCase;
 
-  ChatBloc(this._ChatUseCase) : super(ChatInitial()) {
+  ChatBloc(this._chatUseCase) : super(ChatInitial()) {
     on<InitiateChat>(_onInvokeChat);
   }
 
-  _onInvokeChat(
-      InitiateChat event, Emitter<ChatState> emit) async {
+  _onInvokeChat(InitiateChat event, Emitter<ChatState> emit) async {
     emit(ChatLoading());
 
-    final result = await _ChatUseCase.call(event.prompt);
+    final result = await _chatUseCase.call(event.prompt);
     emit(
       result.fold(
-        (failure) =>
-            const ChatFailed(errorMessage: 'Something went wrong'),
+        (failure) => const ChatFailed(errorMessage: 'Something went wrong'),
         (data) => ChatSuccess(response: data!),
       ),
     );

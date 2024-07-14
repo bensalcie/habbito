@@ -36,15 +36,11 @@ class GetRecommendedTopicsRemoteDataSourceImpl
         print('Get Topics response: $e');
       }
       if (e is GenerativeAIException) {
-
         // Retry Request
         await generateTopics(prompt: prompt);
 
-
         // throw Exception(
         //     'Content generation was blocked due to safety concerns.');
-
-            
       }
       rethrow;
     }
