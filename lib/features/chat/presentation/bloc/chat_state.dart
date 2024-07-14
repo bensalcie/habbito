@@ -1,6 +1,6 @@
 part of 'chat_bloc.dart';
 
-abstract class ChatState extends Equatable {
+class ChatState extends Equatable {
   const ChatState();
 
   @override
@@ -8,3 +8,20 @@ abstract class ChatState extends Equatable {
 }
 
 class ChatInitial extends ChatState {}
+
+class ChatLoading extends ChatState {}
+
+class ChatSuccess extends ChatState {
+  final String response;
+
+  const ChatSuccess({required this.response});
+
+  @override
+  List<Object> get props => [response];
+}
+
+class ChatFailed extends ChatState {
+  final String errorMessage;
+
+  const ChatFailed({required this.errorMessage});
+}
