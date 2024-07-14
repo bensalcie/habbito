@@ -93,7 +93,10 @@ class _HomePageState extends State<HomePage> {
                           const SliverGridDelegateWithFixedCrossAxisCount(
                               mainAxisExtent: 300, crossAxisCount: 2),
                       itemBuilder: (context, index) {
-                        final topic = topiclist[index].capitalizeFirstLetter();
+                        final topic = topiclist[index]
+                            .replaceAll('And', '')
+                            .trim()
+                            .capitalizeFirstLetter();
 
                         return TopicCard(
                           title: topic,
