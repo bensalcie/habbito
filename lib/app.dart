@@ -3,9 +3,11 @@ import 'package:go_router/go_router.dart';
 import 'package:habbito/core/common/constants/app_strings.dart';
 import 'package:habbito/core/common/constants/routes.dart';
 import 'package:habbito/core/common/presentation/widgets/scaffold_with_navbar.dart';
+import 'package:habbito/features/about/presentation/pages/about_page.dart';
 import 'package:habbito/features/chat/presentation/pages/chat_page.dart';
 import 'package:habbito/features/home/presentation/pages/home_page.dart';
 import 'package:habbito/features/home/presentation/pages/topic_details_page.dart';
+import 'package:habbito/features/topics/presentation/pages/topics_page.dart';
 import 'package:habbito/themes/theme.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
@@ -58,11 +60,20 @@ class App extends StatelessWidget {
                 ),
               ]),
           GoRoute(
-            path: topics_page_index,
-            builder: (BuildContext context, GoRouterState state) {
-              return const ChatPage();
-            },
-          ),
+              path: topics_page_index,
+              builder: (BuildContext context, GoRouterState state) {
+                return const TopicsPage();
+              },
+              routes: [
+                GoRoute(
+                  path: topic_details_index,
+                  builder: (BuildContext context, GoRouterState state) {
+                    return TopicDetailsPage(
+                      title: state.extra as String,
+                    );
+                  },
+                ),
+              ]),
           GoRoute(
             path: chat_page_index,
             builder: (BuildContext context, GoRouterState state) {
@@ -78,7 +89,7 @@ class App extends StatelessWidget {
           GoRoute(
             path: about_page_index,
             builder: (BuildContext context, GoRouterState state) {
-              return const ChatPage();
+              return const AboutPage();
             },
           ),
         ],

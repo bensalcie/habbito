@@ -9,6 +9,9 @@ const geminipro = 'gemini-pro';
 
 const initialprompt =
     'Apart from bad habbits such as  alcohol habits, list the top six others faced globally by youths,make them to a comma separated';
+
+const initialtopicsprompt =
+    'List the top twenty ways (short summary) to live healthy as a young person,make them to a hash(#) separated e.g hi#me# not numbered';
 //'What to avoid to live healthy';
 // 'List top five additctions that people struggle with globally ,let them be as short as possible and listed each on its new line.';
 

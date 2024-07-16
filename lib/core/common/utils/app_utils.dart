@@ -7,6 +7,7 @@ import 'package:habbito/core/common/constants/app_strings.dart';
 import 'package:habbito/core/common/presentation/widgets/app_textview_subtitle.dart';
 import 'package:habbito/themes/theme.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 //Show snackbar
 void showSnackBar({
@@ -412,4 +413,11 @@ String capitalizeFirstLetter(String text) {
     return text;
   }
   return text[0].toUpperCase() + text.substring(1);
+}
+
+// Open Url in Browser.
+Future<void> openInBrowser({required String urltoOpen}) async {
+  if (!await launchUrl(Uri.parse(urltoOpen))) {
+    throw Exception('Could not launch $urltoOpen');
+  }
 }
