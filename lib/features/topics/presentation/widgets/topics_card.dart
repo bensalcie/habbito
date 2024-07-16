@@ -23,9 +23,8 @@ class _TopicsCardState extends State<TopicsCard> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context
-            .read<TopicContentBloc>()
-            .add(GetTopicContent(prompt: 'Give exhaustive ways to ${widget.title}'));
+        context.read<TopicContentBloc>().add(
+            GetTopicContent(prompt: 'Give exhaustive ways to ${widget.title}'));
 
         GoRouter.of(context).go(topics_to_details_page, extra: widget.title);
       },

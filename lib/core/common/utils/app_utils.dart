@@ -414,6 +414,7 @@ String capitalizeFirstLetter(String text) {
   }
   return text[0].toUpperCase() + text.substring(1);
 }
+
 // Open Url in Browser.
 Future<void> openInBrowser({required String urltoOpen}) async {
   if (!await launchUrl(Uri.parse(urltoOpen))) {

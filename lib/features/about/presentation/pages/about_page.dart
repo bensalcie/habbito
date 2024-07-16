@@ -94,6 +94,7 @@ class _AboutPageState extends State<AboutPage> {
 
                         // ignore: use_build_context_synchronously
                         showSnackBar(
+                            // ignore: use_build_context_synchronously
                             context: context,
                             message:
                                 'Current APP Version is ${packageInfo.version}',

@@ -9,7 +9,7 @@ import 'package:habbito/features/home/presentation/bloc/topic_content_bloc.dart'
 
 class TopicDetailsPage extends StatefulWidget {
   final String title;
-  
+
   const TopicDetailsPage({super.key, required this.title});
 
   @override
@@ -17,7 +17,6 @@ class TopicDetailsPage extends StatefulWidget {
 }
 
 class _TopicDetailsPageState extends State<TopicDetailsPage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,5 +61,4 @@ class _TopicDetailsPageState extends State<TopicDetailsPage> {
       ),
     );
   }
-
 }
