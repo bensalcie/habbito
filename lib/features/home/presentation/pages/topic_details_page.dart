@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:habbito/core/common/constants/dimens.dart';
 import 'package:habbito/core/common/presentation/widgets/app_shimmer_vertical_loader.dart';
 import 'package:habbito/core/common/presentation/widgets/app_textview_large.dart';
 import 'package:habbito/core/common/presentation/widgets/app_textview_small.dart';
+import 'package:habbito/core/common/presentation/widgets/formatted_text_view.dart';
 import 'package:habbito/features/home/presentation/bloc/topic_content_bloc.dart';
 
 class TopicDetailsPage extends StatefulWidget {
   final String title;
+  
   const TopicDetailsPage({super.key, required this.title});
 
   @override
@@ -14,11 +17,6 @@ class TopicDetailsPage extends StatefulWidget {
 }
 
 class _TopicDetailsPageState extends State<TopicDetailsPage> {
-  @override
-  void initState() {
-    _fetchDetails();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,17 +24,17 @@ class _TopicDetailsPageState extends State<TopicDetailsPage> {
       appBar: AppBar(
         centerTitle: true,
         title: AppTextViewLarge(
-          message: 'Avoid ${widget.title}',
-          textAlign: TextAlign.center,
+          message: widget.title,
+          textAlign: TextAlign.start,
         ),
       ),
       body: BlocBuilder<TopicContentBloc, TopicContentState>(
         builder: (context, state) {
           if (state is TopicContentSuccess) {
-            return SingleChildScrollView(
-              child: AppTextViewSubtitleSmall(
-                text: state.response.replaceAll('*', ''),
-                textAlign: TextAlign.start,
+            return Padding(
+              padding: const EdgeInsets.all(app_padding),
+              child: SingleChildScrollView(
+                child: FormattedTextView(text: state.response),
               ),
             );
           }
@@ -65,9 +63,4 @@ class _TopicDetailsPageState extends State<TopicDetailsPage> {
     );
   }
 
-  void _fetchDetails() {
-    context
-        .read<TopicContentBloc>()
-        .add(GetTopicContent(prompt: 'How to avoid anything ${widget.title}'));
-  }
 }

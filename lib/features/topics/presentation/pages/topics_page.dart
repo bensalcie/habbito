@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habbito/core/common/constants/app_strings.dart';
@@ -6,24 +8,24 @@ import 'package:habbito/core/common/presentation/widgets/app_shimmer_grid_vertic
 import 'package:habbito/core/common/presentation/widgets/app_textview_large.dart';
 import 'package:habbito/core/common/presentation/widgets/app_textview_small.dart';
 import 'package:habbito/core/common/utils/app_utils.dart';
-import 'package:habbito/features/home/presentation/bloc/topic_recommendations_bloc.dart';
-import 'package:habbito/features/home/presentation/widgets/topic_card.dart';
+import 'package:habbito/features/topics/presentation/bloc/topics_bloc.dart';
+import 'package:habbito/features/topics/presentation/widgets/topics_card.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class TopicsPage extends StatefulWidget {
+  const TopicsPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<TopicsPage> createState() => _TopicsPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _TopicsPageState extends State<TopicsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: const AppTextViewLarge(
-          message: 'Habbito',
+          message: 'Explore Topics',
           textAlign: TextAlign.center,
         ),
       ),
@@ -37,11 +39,11 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: app_large_padding,
               ),
-              BlocBuilder<TopicRecommendationsBloc, TopicRecommendationsState>(
+              BlocBuilder<TopicsBloc, TopicsState>(
                 builder: (context, state) {
-                  if (state is TopicRecommendationsSuccess) {
+                  if (state is TopicsSuccess) {
                     return const AppTextViewLarge(
-                      message: 'What are you struggling with?',
+                      message: 'Live a healthy life',
                       fontSize: 22,
                       textAlign: TextAlign.center,
                     );
@@ -52,9 +54,9 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: app_large_padding,
               ),
-              BlocBuilder<TopicRecommendationsBloc, TopicRecommendationsState>(
+              BlocBuilder<TopicsBloc, TopicsState>(
                 builder: (context, state) {
-                  if (state is TopicRecommendationsLoading) {
+                  if (state is TopicsLoading) {
                     return AppShimmerGridVerticalLoader(
                       height: 200,
                       width: double.infinity,
@@ -66,13 +68,12 @@ class _HomePageState extends State<HomePage> {
                       isCircular: true,
                     );
                   }
-                  if (state is TopicRecommendationsFailed) {
+                  if (state is TopicsFailed) {
                     return Center(
                       child: FloatingActionButton.extended(
                         onPressed: () => context
-                            .read<TopicRecommendationsBloc>()
-                            .add(const GetTopicRecommendations(
-                                prompt: initialprompt)),
+                            .read<TopicsBloc>()
+                            .add(const GetTopics(prompt: initialprompt)),
                         label: const AppTextViewSubtitleSmall(
                           text: 'Retry',
                           padding: 0,
@@ -81,26 +82,26 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   }
-                  if (state is TopicRecommendationsSuccess) {
+                  if (state is TopicsSuccess) {
                     final topics = state.response;
 
-                    List<String> topiclist = topics.split(',');
+                    List<String> topiclist = topics.split('#');
+                    topiclist.removeWhere((item) => item.isEmpty);
 
-                    return GridView.builder(
+                    return ListView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              mainAxisExtent: 220, crossAxisCount: 2),
                       itemBuilder: (context, index) {
-                        final topic = topiclist[index]
-                            .replaceAll('And', '')
-                            .trim()
-                            .capitalizeFirstLetter();
+                        final topic =
+                            topiclist[index].trim().capitalizeFirstLetter();
 
-                        return TopicCard(
+                        final random = Random();
+                        final randomindex =
+                            random.nextInt(imagelistdummy.length);
+
+                        return TopicsCard(
                           title: topic,
-                          imageurl: imagelistdummy[index],
+                          imageurl: imagelistdummy[randomindex],
                         );
                       },
                       itemCount: topiclist.length,

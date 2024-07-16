@@ -9,25 +9,25 @@ import 'package:habbito/features/home/presentation/bloc/topic_content_bloc.dart'
 import 'package:habbito/features/home/presentation/bloc/topic_image_bloc.dart';
 import 'package:habbito/themes/theme.dart';
 
-class TopicCard extends StatefulWidget {
+class TopicsCard extends StatefulWidget {
   final String title;
   final String imageurl;
-  const TopicCard({super.key, required this.title, required this.imageurl});
+  const TopicsCard({super.key, required this.title, required this.imageurl});
 
   @override
-  State<TopicCard> createState() => _TopicCardState();
+  State<TopicsCard> createState() => _TopicsCardState();
 }
 
-class _TopicCardState extends State<TopicCard> {
+class _TopicsCardState extends State<TopicsCard> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.read<TopicContentBloc>().add(
-            GetTopicContent(prompt: 'How to avoid anything ${widget.title}'));
+        context
+            .read<TopicContentBloc>()
+            .add(GetTopicContent(prompt: 'Give exhaustive ways to ${widget.title}'));
 
-        GoRouter.of(context)
-            .go(homepage_to_topic_details_page, extra: 'Avoid ${widget.title}');
+        GoRouter.of(context).go(topics_to_details_page, extra: widget.title);
       },
       child: Card(
         shape: RoundedRectangleBorder(
@@ -40,8 +40,6 @@ class _TopicCardState extends State<TopicCard> {
               imageurl = state.response;
             }
             return Ink(
-              width: 300,
-              height: 100,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15.0),
                 image: DecorationImage(
@@ -61,6 +59,7 @@ class _TopicCardState extends State<TopicCard> {
                       const EdgeInsets.only(bottom: elements_large_padding),
                   child: AppTextViewMedium(
                     text: widget.title,
+                    fontSize: 17,
                     textColor: kLightColor,
                     textAlign: TextAlign.start,
                   ),

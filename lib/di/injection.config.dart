@@ -31,7 +31,8 @@ import '../features/home/presentation/bloc/topic_content_bloc.dart' as _i16;
 import '../features/home/presentation/bloc/topic_image_bloc.dart' as _i13;
 import '../features/home/presentation/bloc/topic_recommendations_bloc.dart'
     as _i14;
-import 'module_injection.dart' as _i17;
+import '../features/topics/presentation/bloc/topics_bloc.dart' as _i17;
+import 'module_injection.dart' as _i18;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -82,8 +83,10 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i15.ChatBloc(gh<_i12.GetRecommendedTopicsUseCase>()));
     gh.factory<_i16.TopicContentBloc>(
         () => _i16.TopicContentBloc(gh<_i12.GetRecommendedTopicsUseCase>()));
+    gh.factory<_i17.TopicsBloc>(
+        () => _i17.TopicsBloc(gh<_i12.GetRecommendedTopicsUseCase>()));
     return this;
   }
 }
 
-class _$RegisterModules extends _i17.RegisterModules {}
+class _$RegisterModules extends _i18.RegisterModules {}

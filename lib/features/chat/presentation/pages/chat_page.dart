@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:habbito/core/common/constants/dimens.dart';
 import 'package:habbito/core/common/presentation/widgets/app_edit_text.dart';
 import 'package:habbito/core/common/presentation/widgets/app_textview_large.dart';
 import 'package:habbito/core/common/presentation/widgets/app_textview_small.dart';
@@ -75,6 +76,11 @@ class _ChatPageState extends State<ChatPage> {
         controller: _scrollController,
         child: Column(
           children: [
+            Image.asset(
+              'assets/images/welcome.gif',
+              height: 150,
+              width: 150,
+            ),
             BlocBuilder<ChatBloc, ChatState>(
               builder: (context, state) {
                 if (state is ChatSuccess) {
@@ -104,13 +110,13 @@ class _ChatPageState extends State<ChatPage> {
                       )
                     : const Center(
                         child: Padding(
-                          padding: EdgeInsets.only(top: 50),
+                          padding: EdgeInsets.only(top: 20),
                           child: AppTextViewSubtitleSmall(
-                            padding: 30,
                             weight: FontWeight.w300,
+                            fontSize: 18,
                             text:
-                                'Hi and Welcome,  Bot Habbito, Here you Ask Anything habbits..',
-                            textAlign: TextAlign.start,
+                                'Hi and Welcome,  Bot Habbito here\n Here you Ask Anything habbits..',
+                            textAlign: TextAlign.center,
                           ),
                         ),
                       );
@@ -160,7 +166,7 @@ class _ChatPageState extends State<ChatPage> {
         builder: (context, value, child) {
           return value
               ? Padding(
-                  padding: const EdgeInsets.all(0.0),
+                  padding: const EdgeInsets.symmetric(vertical: app_padding),
                   child: Card(
                     surfaceTintColor: kLightColor,
                     margin: EdgeInsets.zero,
