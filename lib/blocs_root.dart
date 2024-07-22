@@ -6,6 +6,7 @@ import 'package:habbito/features/chat/presentation/bloc/chat_bloc.dart';
 import 'package:habbito/features/home/presentation/bloc/topic_content_bloc.dart';
 import 'package:habbito/features/home/presentation/bloc/topic_image_bloc.dart';
 import 'package:habbito/features/home/presentation/bloc/topic_recommendations_bloc.dart';
+import 'package:habbito/features/personal/presentation/bloc/local_auth_bloc.dart';
 import 'package:habbito/features/topics/presentation/bloc/topics_bloc.dart';
 import 'package:habbito/main.dart';
 
@@ -30,6 +31,7 @@ class BlocsRoot extends StatelessWidget {
         BlocProvider(
             create: (context) => getIt<TopicsBloc>()
               ..add(const GetTopics(prompt: initialtopicsprompt))),
+        BlocProvider(create: (context) => getIt<LocalAuthBloc>()),
       ],
       child: MyApp(
         token: apptoken,

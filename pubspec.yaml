@@ -58,6 +58,8 @@ dependencies:
   google_generative_ai: ^0.2.2
   url_launcher: ^6.3.0
   package_info_plus: ^8.0.0
+  local_auth: ^2.2.0
+  syncfusion_flutter_charts: ^26.1.42
 
 
 

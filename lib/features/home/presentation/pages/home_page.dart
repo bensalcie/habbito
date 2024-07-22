@@ -108,8 +108,15 @@ class _HomePageState extends State<HomePage> {
                                 mainAxisExtent: 220, crossAxisCount: 2),
                         itemBuilder: (context, index) {
                           final topic = topiclist[index]
-                              .replaceAll('And', '')
-                              .trim()
+                              .replaceAll(
+                                'And',
+                                '',
+                              )
+                              .replaceAll(
+                                'and',
+                                '',
+                              )
+                              .trimLeft()
                               .capitalizeFirstLetter();
 
                           return TopicCard(
