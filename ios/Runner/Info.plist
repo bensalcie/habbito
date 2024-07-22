@@ -47,5 +47,8 @@
 		<true/>
 		<key>UIStatusBarHidden</key>
 		<false/>
+
+		<key>NSFaceIDUsageDescription</key>
+        <string>Authenticate to Add / View Personal Habbits Page?</string>
 	</dict>
 </plist>

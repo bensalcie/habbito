@@ -7,6 +7,7 @@ import 'package:habbito/features/about/presentation/pages/about_page.dart';
 import 'package:habbito/features/chat/presentation/pages/chat_page.dart';
 import 'package:habbito/features/home/presentation/pages/home_page.dart';
 import 'package:habbito/features/home/presentation/pages/topic_details_page.dart';
+import 'package:habbito/features/personal/presentation/pages/personal_page.dart';
 import 'package:habbito/features/topics/presentation/pages/topics_page.dart';
 import 'package:habbito/themes/theme.dart';
 
@@ -83,7 +84,7 @@ class App extends StatelessWidget {
           GoRoute(
             path: personal_page_index,
             builder: (BuildContext context, GoRouterState state) {
-              return const ChatPage();
+              return const PersonalPage();
             },
           ),
           GoRoute(
