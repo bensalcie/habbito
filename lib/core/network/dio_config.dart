@@ -331,7 +331,6 @@ class DioClient {
   }
 
   Future get(
-    APIDESTINATION destination,
     String uri, {
     Map<String, dynamic>? queryParameters,
     Options? options,
@@ -339,27 +338,11 @@ class DioClient {
     ProgressCallback? onReceiveProgress,
   }) async {
     try {
-      final apptoken = await getIt<StorageUtils>().getDataForSingle(
-        key: token,
-      );
-      if (kDebugMode) {
-        print('Token: $apptoken');
-      }
-
-      destination == APIDESTINATION.indexroute
-          ? _dio.options.baseUrl = dotenv.env['INDEX_BASE_URL']!
-          : _dio.options.baseUrl = dotenv.env['BASE_URL']!;
       _dio.interceptors.add(
         InterceptorsWrapper(
           onRequest: (options, handler) {
             // Add the access token to the request header
-            if (apptoken.isNotEmpty) {
-              options.headers['Authorization'] = 'Token $apptoken';
-            }
-            if (destination == APIDESTINATION.indexroute) {
-              options.headers['api-key'] = dotenv.env['INDEX_APIKEY'];
-            }
-
+            options.headers['Authorization'] = dotenv.env['PEXEL_KEY'];
             return handler.next(options);
           },
           onError: (DioException e, handler) async {

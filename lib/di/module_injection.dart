@@ -13,7 +13,7 @@ abstract class RegisterModules {
 
   // Register the baseUrl String.
   @Named('BaseUrl')
-  String get baseUrl => dotenv.env['BASE_URL']!;
+  String get baseUrl => dotenv.env['PEXEL_BASE_URL']!;
 
   // Register the method channel for communication with platform code. Incase there will be any.
 

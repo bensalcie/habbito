@@ -1,0 +1,104 @@
+# name: Continuous Deployment
+# on:
+#   push:
+#     branches:
+#       - develop
+
+# jobs:
+#   build-artifacts:
+#     runs-on: macos-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Setup JDK
+#         uses: actions/setup-java@v2
+#         with:
+#           distribution: 'zulu'
+#           java-version: '17'
+
+#       - name: Setup Android SDK
+#         uses: android-actions/setup-android@v2
+#       - uses: subosito/flutter-action@v2
+#         with:
+#           flutter-version: '3.22.2'
+#           channel: "stable"
+#           cache: true
+
+#       - name: Clean Project
+#         run: flutter clean
+
+#       - name: Get flutter dependencies.
+#         run: flutter pub get
+
+#       - name: Make git_decrypt executable
+#         run: chmod +x ./git_decrypt_secret.sh
+
+#       - name: Decrypt secret
+#         run: ./git_decrypt_secret.sh
+#         env:
+#           SECRET_PASSPHRASE: ${{ secrets.SECRET_PASSPHRASE }}
+
+#       - name: Build Debug apk
+#         run: flutter build apk --debug
+
+#       - name: Upload android debug to the artifacts.
+#         uses: actions/upload-artifact@v2
+#         with:
+#           name: app-debug.apk
+#           path: build/app/outputs/flutter-apk/app-debug.apk
+#           if-no-files-found: error
+
+#       - name: Build Release apk
+#         run: flutter build apk --release
+
+#       - name: Upload android release to the artifacts.
+#         uses: actions/upload-artifact@v2
+#         with:
+#           name: app-release.apk
+#           path: build/app/outputs/flutter-apk/app-release.apk
+#           if-no-files-found: error
+
+#   deploy:
+#     needs: build-artifacts
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#         with:
+#           fetch-depth: 0
+#           fetch-tags: true
+
+#       - name: Generate changelog
+#         run: |
+#           git fetch && \
+#           git log --oneline --merges --date-order "$(git describe --tags --abbrev=0)"..HEAD > release.txt \
+#           && cat release.txt
+
+#       - uses: actions/download-artifact@v2
+#         with:
+#           name: app-debug.apk
+#       - name: Firebase App Distribution Android Debug
+#         uses: wzieba/Firebase-Distribution-Github-Action@v1
+#         with:
+#           appId: ${{secrets.ANDROID_DEBUG_FIREBASE_ID}}
+#           token: ${{secrets.FIREBASE_DEPLOY_TOKEN}}
+#           groups: android-testers
+#           file: app-debug.apk
+#           releaseNotesFile: release.txt
+
+#       - uses: actions/download-artifact@v2
+#         with:
+#           name: app-release.apk
+#       - name: Firebase App Distribution Android Release
+#         uses: wzieba/Firebase-Distribution-Github-Action@v1
+#         with:
+#           appId: ${{secrets.ANDROID_FIREBASE_ID}}
+#           token: ${{secrets.FIREBASE_DEPLOY_TOKEN}}
+#           groups: beta-testers
+#           file: app-release.apk
+
+      # - name: Firebase App Distribution IOS
+      #   uses: wzieba/Firebase-Distribution-Github-Action@v1.2.1
+      #   with:
+      #     appId: ${{secrets.FIREBASE_APP_ID}}
+      #     token: ${{secrets.FIREBASE_TOKEN}}
+      #     groups: testers
+      #     file: app/build/outputs/apk/release/app-release-unsigned.apk

@@ -8,9 +8,20 @@ class TopicImageEvent extends Equatable {
 }
 
 class GetTopicImage extends TopicImageEvent {
-  final String prompt;
-  const GetTopicImage({required this.prompt});
+  final String imagename;
+  final int position;
+  const GetTopicImage({required this.imagename, required this.position});
 
   @override
-  List<Object> get props => [prompt];
+  List<Object> get props => [imagename];
+}
+
+class GetTopicImages extends TopicImageEvent {
+  final List<String> imagenames;
+  const GetTopicImages({
+    required this.imagenames,
+  });
+
+  @override
+  List<Object> get props => [imagenames];
 }

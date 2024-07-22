@@ -8,6 +8,7 @@ class GenerativeModelService {
       : model = GenerativeModel(
           model: geminipro,
           apiKey: apiKey,
+          safetySettings: [],
         );
 
   Future<String?> generateContent(Iterable<Content> content) async {

@@ -92,14 +92,14 @@ class _TopicsPageState extends State<TopicsPage> {
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
-                        final topic =
-                            topiclist[index].trim().capitalizeFirstLetter();
+                        final topic = topiclist[index].capitalizeFirstLetter();
 
                         final random = Random();
                         final randomindex =
                             random.nextInt(imagelistdummy.length);
 
                         return TopicsCard(
+                          position: index,
                           title: topic,
                           imageurl: imagelistdummy[randomindex],
                         );
