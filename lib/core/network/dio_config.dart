@@ -338,12 +338,11 @@ class DioClient {
     ProgressCallback? onReceiveProgress,
   }) async {
     try {
-
       _dio.interceptors.add(
         InterceptorsWrapper(
           onRequest: (options, handler) {
             // Add the access token to the request header
-              options.headers['Authorization'] =  dotenv.env['PEXEL_KEY'] ;
+            options.headers['Authorization'] = dotenv.env['PEXEL_KEY'];
             return handler.next(options);
           },
           onError: (DioException e, handler) async {

@@ -24,7 +24,6 @@ class TopicCard extends StatefulWidget {
 }
 
 class _TopicCardState extends State<TopicCard> {
-
   @override
   Widget build(BuildContext context) {
     return InkWell(

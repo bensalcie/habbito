@@ -12,10 +12,11 @@ class GetPhotoByNameRepositoryImpl implements GetPhotoByNameRepository {
   GetPhotoByNameRepositoryImpl(this._getRecommendedTopicsRemoteDataSource);
 
   @override
-  Future<Either<Failure, List<String>?>> getPhotos({required List<String?> photonames}) async {
+  Future<Either<Failure, List<String>?>> getPhotos(
+      {required List<String?> photonames}) async {
     try {
-      final List<String> topics =
-          await _getRecommendedTopicsRemoteDataSource.getPhotos(photonames: photonames);
+      final List<String> topics = await _getRecommendedTopicsRemoteDataSource
+          .getPhotos(photonames: photonames);
 
       return Right(topics);
     } on ServerException {

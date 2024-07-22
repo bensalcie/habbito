@@ -15,10 +15,8 @@ class TopicImageBloc extends Bloc<TopicImageEvent, TopicImageState> {
     on<GetTopicImages>(_onGetTopicImages);
   }
 
-
-    _onGetTopicImages(GetTopicImages event, Emitter<TopicImageState> emit) async {
+  _onGetTopicImages(GetTopicImages event, Emitter<TopicImageState> emit) async {
     emit(TopicImageLoading());
-    
 
     final result = await _getPhotoByNameUseCase.call(event.imagenames);
     emit(
