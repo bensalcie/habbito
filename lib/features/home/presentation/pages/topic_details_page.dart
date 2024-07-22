@@ -23,6 +23,7 @@ class _TopicDetailsPageState extends State<TopicDetailsPage> {
       appBar: AppBar(
         centerTitle: true,
         title: AppTextViewLarge(
+          padding: 0,
           message: widget.title,
           textAlign: TextAlign.start,
         ),

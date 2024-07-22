@@ -12,7 +12,7 @@ class TopicImageInitial extends TopicImageState {}
 class TopicImageLoading extends TopicImageState {}
 
 class TopicImageSuccess extends TopicImageState {
-  final String response;
+  final List<String> response;
 
   const TopicImageSuccess({required this.response});
 
