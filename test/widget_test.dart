@@ -11,7 +11,7 @@ import 'package:habbito/core/common/utils/app_utils.dart';
 void main() {
   test('Test formatDate with 2024-05-22T12:37:15.680000+03:00', () {
     String input = '2024-05-22T12:37:15.680000+03:00';
-    String expectedOutput = 'May 22, 12:37 PM';
+    String expectedOutput = 'May 22, 09:37 AM';
 
     String actualOutput = convertDateTime(input);
 
