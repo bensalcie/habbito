@@ -8,9 +8,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:habbito/core/common/utils/app_utils.dart';
 
-
 void main() {
-    test('Test formatDate with 2024-05-22T12:37:15.680000+03:00', () {
+  test('Test formatDate with 2024-05-22T12:37:15.680000+03:00', () {
     String input = '2024-05-22T12:37:15.680000+03:00';
     String expectedOutput = 'May 22, 12:37 PM';
 
