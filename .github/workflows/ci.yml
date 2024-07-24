@@ -1,47 +1,47 @@
-# name: CI
+name: CI
 
-# on:
-#   pull_request:
-#     branches:
-#       - develop
+on:
+  pull_request:
+    branches:
+      - develop
 
-# jobs:
-#   test:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v2
+jobs:
+  CI-RUN-TESTS-CODE-ANALYZE:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
 
-#       - name: Setup JDK
-#         uses: actions/setup-java@v2
-#         with:
-#           distribution: 'zulu'
-#           java-version: '17'
+      - name: Setup JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'zulu'
+          java-version: '17'
 
-#       - name: Setup Android SDK
-#         uses: android-actions/setup-android@v2
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
 
-#       - uses: subosito/flutter-action@v2
-#         with:
-#           flutter-version: '3.22.2'
-#           channel: "stable"
-#           cache: true
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.22.2'
+          channel: "stable"
+          cache: true
 
-#       - name: Get flutter dependencies.
-#         run: flutter pub get
+      - name: Get flutter dependencies.
+        run: flutter pub get
 
-#       - name: Make git_decrypt executable
-#         run: chmod +x ./git_decrypt_secret.sh
+      # - name: Make git_decrypt executable
+      #   run: chmod +x ./git_decrypt_secret.sh
 
-#       - name: Decrypt secret
-#         run: ./git_decrypt_secret.sh
-#         env:
-#           SECRET_PASSPHRASE: ${{ secrets.SECRET_PASSPHRASE }}
+      # - name: Decrypt secret
+      #   run: ./git_decrypt_secret.sh
+      #   env:
+      #     SECRET_PASSPHRASE: ${{ secrets.SECRET_PASSPHRASE }}
 
-#       - name: Check for any formatting issues in the code.
-#         run: dart format --set-exit-if-changed .
+      - name: Check for any formatting issues in the code.
+        run: dart format --set-exit-if-changed .
 
-#       - name: Statically analyze the Dart code for any errors.
-#         run: flutter analyze .
+      - name: Statically analyze the Dart code for any errors.
+        run: flutter analyze .
 
-#       # - name: Run widget tests for our flutter project.
-#       #   run: flutter test
+      - name: Run widget tests for our flutter project.
+        run: flutter test

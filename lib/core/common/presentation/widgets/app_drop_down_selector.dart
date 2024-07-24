@@ -12,6 +12,7 @@ class AppDropDownSelector extends StatelessWidget {
   final TextEditingController? controller;
   final bool? hasPadding;
   final Function(String? newValue)? onChanged;
+  final Color? textColor;
 
   const AppDropDownSelector(
       {super.key,
@@ -20,6 +21,7 @@ class AppDropDownSelector extends StatelessWidget {
       required this.firstItem,
       this.controller,
       this.onChanged,
+      this.textColor,
       this.hasPadding});
 
   @override
@@ -67,7 +69,7 @@ class AppDropDownSelector extends StatelessWidget {
                       child: Text(
                         value,
                         style: TextStyle(
-                            color: kTextInputTextColor,
+                            color: textColor ?? kTextInputTextColor,
                             fontSize: 17.0,
                             fontFamily: app_font,
                             fontWeight: FontWeight.w500),
