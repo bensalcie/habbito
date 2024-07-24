@@ -6,7 +6,7 @@ on:
       - develop
 
 jobs:
-  test:
+  CI-RUN-TESTS-CODE-ANALYZE:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
