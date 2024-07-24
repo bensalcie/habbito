@@ -6,6 +6,7 @@ const cancel = 'Cancel';
 const home_label = 'Home';
 const token = 'token';
 const geminipro = 'gemini-pro';
+const na = 'N/A';
 
 const initialprompt =
     'Apart from bad habbits such as  alcohol habits, list the top six others faced globally by youths,make them to a comma separated';

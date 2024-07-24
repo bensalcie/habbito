@@ -1,12 +1,17 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:habbito/core/common/constants/dimens.dart';
+import 'package:habbito/core/common/constants/routes.dart';
 import 'package:habbito/core/common/presentation/widgets/app_button.dart';
 import 'package:habbito/core/common/presentation/widgets/app_textview_large.dart';
 import 'package:habbito/core/common/presentation/widgets/app_textview_small_no_tap.dart';
 import 'package:habbito/core/common/presentation/widgets/app_textview_subtitle.dart';
 import 'package:habbito/core/common/utils/app_utils.dart';
+import 'package:habbito/features/personal/presentation/bloc/get_habbits_bloc.dart';
 import 'package:habbito/features/personal/presentation/bloc/local_auth_bloc.dart';
+import 'package:habbito/features/personal/presentation/widgets/habbit_card.dart';
 import 'package:habbito/themes/theme.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -71,6 +76,34 @@ class _PersonalPageState extends State<PersonalPage> {
                         const SizedBox(
                           height: app_large_padding,
                         ),
+
+                        const SizedBox(
+                          height: app_padding,
+                        ),
+
+                        BlocBuilder<GetHabbitsBloc, GetHabbitsState>(
+                          builder: (context, state) {
+                            if (state is GetHabbitsSuccess) {
+                              final habbits = state.habbits;
+                              return SizedBox(
+                                height: 200,
+                                child: ListView.builder(
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: habbits.length,
+                                  itemBuilder: (context, index) {
+                                    return HabbitCard(
+                                      habbit: habbits[index],
+                                    );
+                                  },
+                                ),
+                              );
+                            }
+
+                            return const SizedBox.shrink();
+                          },
+                        ),
+
                         //Initialize the chart widget
                         SizedBox(
                           height: 400,
@@ -174,6 +207,21 @@ class _PersonalPageState extends State<PersonalPage> {
                 },
               ),
             )),
+      ),
+      floatingActionButton: BlocBuilder<LocalAuthBloc, LocalAuthState>(
+        builder: (context, state) {
+          if (state is LocalAuthSuccess) {
+            return FloatingActionButton.extended(
+              onPressed: () {
+                GoRouter.of(context).go(personal_to_add_habbit_page);
+              },
+              icon: const Icon(CupertinoIcons.calendar_badge_plus),
+              label: const AppTextViewSubtitleSmallNoTap(
+                  padding: 0, text: 'Add Habbit', textAlign: TextAlign.center),
+            );
+          }
+          return const SizedBox.shrink();
+        },
       ),
     );
   }
