@@ -52,12 +52,6 @@ class _PersonalPageState extends State<PersonalPage> {
                       message: 'Unable to Authenticate ${state.errorMessage}',
                       type: SnackBarType.warning);
                 }
-                if (state is LocalAuthSuccess) {
-                  showSnackBar(
-                      context: context,
-                      message: state.response,
-                      type: SnackBarType.success);
-                }
               },
               child: BlocBuilder<LocalAuthBloc, LocalAuthState>(
                 builder: (context, state) {
@@ -77,27 +71,25 @@ class _PersonalPageState extends State<PersonalPage> {
                           height: app_large_padding,
                         ),
 
-                        const SizedBox(
-                          height: app_padding,
-                        ),
-
                         BlocBuilder<GetHabbitsBloc, GetHabbitsState>(
                           builder: (context, state) {
                             if (state is GetHabbitsSuccess) {
                               final habbits = state.habbits;
-                              return SizedBox(
-                                height: 200,
-                                child: ListView.builder(
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: habbits.length,
-                                  itemBuilder: (context, index) {
-                                    return HabbitCard(
-                                      habbit: habbits[index],
-                                    );
-                                  },
-                                ),
-                              );
+                              return habbits.isNotEmpty
+                                  ? SizedBox(
+                                      height: 200,
+                                      child: ListView.builder(
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.horizontal,
+                                        itemCount: habbits.length,
+                                        itemBuilder: (context, index) {
+                                          return HabbitCard(
+                                            habbit: habbits[index],
+                                          );
+                                        },
+                                      ),
+                                    )
+                                  : const SizedBox.shrink();
                             }
 
                             return const SizedBox.shrink();

@@ -21,7 +21,11 @@ const chat_page_index = '/chat';
 //PERSONAL
 const personal_page_index = '/personal';
 const add_babbit_index = 'add-habbit';
+const habbit_details_index = 'habbit-details';
+
 const personal_to_add_habbit_page = '$personal_page_index/$add_babbit_index';
+const personal_habbit_details_page =
+    '$personal_page_index/$habbit_details_index';
 
 //ABOUT
 const about_page_index = '/about';

@@ -16,15 +16,22 @@ void showSnackBar({
   required SnackBarType type,
 }) {
   WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      backgroundColor: type == SnackBarType.success
-          ? kPrimaryDark
-          : type == SnackBarType.warning
-              ? Colors.amber
-              : Colors.red,
-      content: AppTextViewSubtitle(text: message, textAlign: TextAlign.center),
-      duration: const Duration(seconds: 2),
-    ));
+    try {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        backgroundColor: type == SnackBarType.success
+            ? kPrimaryDark
+            : type == SnackBarType.warning
+                ? Colors.amber
+                : Colors.red,
+        content:
+            AppTextViewSubtitle(text: message, textAlign: TextAlign.center),
+        duration: const Duration(seconds: 2),
+      ));
+    } catch (e) {
+      if (kDebugMode) {
+        print("Unable to Umount Widget.");
+      }
+    }
   });
 }
 

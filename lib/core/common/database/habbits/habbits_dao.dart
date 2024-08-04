@@ -1,6 +1,6 @@
 import 'package:drift/drift.dart';
 import 'package:habbito/core/common/constants/app_strings.dart';
-import 'package:habbito/core/common/database/cart/habbits_table.dart';
+import 'package:habbito/core/common/database/habbits/habbits_table.dart';
 import 'package:habbito/core/common/database/common/app_database.dart';
 import 'package:habbito/features/personal/data/models/habbit_model.dart';
 
