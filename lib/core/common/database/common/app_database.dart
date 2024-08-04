@@ -2,8 +2,12 @@ import 'dart:io';
 
 import 'package:drift/drift.dart';
 import 'package:drift/native.dart' show NativeDatabase;
-import 'package:habbito/core/common/database/cart/habbits_dao.dart';
-import 'package:habbito/core/common/database/cart/habbits_table.dart';
+import 'package:habbito/core/common/database/habbits/habbit_schedule_dao.dart';
+import 'package:habbito/core/common/database/habbits/habbit_schedule_table.dart';
+import 'package:habbito/core/common/database/habbits/habbits_dao.dart';
+import 'package:habbito/core/common/database/habbits/habbits_table.dart';
+import 'package:habbito/core/common/database/habbits/track_habbit_dao.dart';
+import 'package:habbito/core/common/database/habbits/track_habbit_table.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path_provider/path_provider.dart';
 // ignore: depend_on_referenced_packages
@@ -32,8 +36,8 @@ part 'app_database.g.dart';
 /// operation to the db easier to manage. Check out:
 /// * https://drift.simonbinder.eu/docs/advanced-features/daos/ .
 @DriftDatabase(
-  tables: [HabbitsTable],
-  daos: [HabbitsDao],
+  tables: [HabbitsTable, TrackHabbitTable, HabbitScheduleTable],
+  daos: [HabbitsDao, TrackHabbitDao, HabbitScheduleDao],
 )
 @singleton
 class AppDatabase extends _$AppDatabase {

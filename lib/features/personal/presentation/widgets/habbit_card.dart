@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:habbito/core/common/constants/routes.dart';
 import 'package:habbito/core/common/presentation/widgets/app_textview_medium.dart';
 import 'package:habbito/core/common/utils/app_utils.dart';
 import 'package:habbito/features/personal/data/models/habbit_model.dart';
@@ -24,11 +26,8 @@ class _HabbitCardState extends State<HabbitCard> {
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () {
-          // context.read<HabbitContentBloc>().add(
-          //     GetHabbitContent(prompt: 'How to avoid anything ${widget.title}'));
-
-          // GoRouter.of(context)
-          //     .go(homepage_to_topic_details_page, extra: 'Avoid ${widget.title}');
+          GoRouter.of(context)
+              .go(personal_habbit_details_page, extra: widget.habbit);
         },
         child: Stack(
           children: [

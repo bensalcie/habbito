@@ -7,7 +7,9 @@ import 'package:habbito/features/about/presentation/pages/about_page.dart';
 import 'package:habbito/features/chat/presentation/pages/chat_page.dart';
 import 'package:habbito/features/home/presentation/pages/home_page.dart';
 import 'package:habbito/features/home/presentation/pages/topic_details_page.dart';
+import 'package:habbito/features/personal/data/models/habbit_model.dart';
 import 'package:habbito/features/personal/presentation/pages/add_habbit_page.dart';
+import 'package:habbito/features/personal/presentation/pages/habbit_details_page.dart';
 import 'package:habbito/features/personal/presentation/pages/personal_page.dart';
 import 'package:habbito/features/topics/presentation/pages/topics_page.dart';
 import 'package:habbito/themes/theme.dart';
@@ -92,6 +94,14 @@ class App extends StatelessWidget {
                   path: add_babbit_index,
                   builder: (BuildContext context, GoRouterState state) {
                     return const AddHabbitPage();
+                  },
+                ),
+                GoRoute(
+                  path: habbit_details_index,
+                  builder: (BuildContext context, GoRouterState state) {
+                    return HabbitDetailsPage(
+                      habbit: state.extra as HabbitModel,
+                    );
                   },
                 ),
               ]),
