@@ -4,6 +4,8 @@ A revolutionary way to quit any kind of addiction through AI (GEMINI). 🚀
 
 ## Explore details
 
+https://youtu.be/kGqjNCbedr4
+
 Habbito brings to you a  revolutionary way to quit any kind of addiction through AI. It utilizes on device Machine learning models and behavioral Science to bring to life daily routines of an individual, maps down what the individual is struggling with. It analyzes individuals patterns and behaviors and comes up with an informed plan, schedule on how the individual can become better and quit the addiction. 
 In the USA , 7.4% of people over age 12 have a substance use disorder. 3% of people over age 12 have an illicit drug use disorder all these are as a result of addiction. Addictions may come in different forms and shape, Procrastination,  Masturbation, Junks, Party just to mention a few.
 This solution tends to eliminate some of the habbits a user tries to quit but are unable to, by studying this individuals habbits over time and be able to differentiate on what is good and an addiction. The app has a wealth of information covering different topic to enlighten a user, it has a chat  assistant that they can ask anything about their addition and how to quit. It has daily and monthly checkings where users can assess progress for their scheduled plan on quiting a given addiction.
